@@ -75,6 +75,27 @@ class AppAsset extends AssetBundle
                         'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=skulist",
                         'role'=>'2'
                     ],
+                ],
+            '师傅管理'=>[
+                   
+                    '师傅信息管理'=>[
+                        'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=shifu",
+                        'role'=>'2'
+                    ],
+                    '日程管理'=>[
+                        'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=minutesres",
+                        'role'=>'2'
+                    ],
+                    
+                ],
+            '服务区管理'=>[
+                   
+                    '服务区信息管理'=>[
+                        'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=srvzone",
+                        'role'=>'2'
+                    ]
+                    
+                    
                 ]
             ];
         return $this->menu;

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'addr_list')->textArea(['rows' => 6])->hint('输入格式正在考虑之中') ?>
+    <?= $form->field($model, 'addr_list')->checkboxlist(Yii::$app->params['zonelist']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

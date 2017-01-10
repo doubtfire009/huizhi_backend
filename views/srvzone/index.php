@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use app\models\SrvZone;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\SrvZoneSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -20,14 +20,24 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'name',
-            'addr_list',
-
+            
+            ['attribute'=>'addr_list',
+					'value' => function ($model) { 
+                                                        $arr = explode("|",$model->addr_list); 
+                                                        
+                                                        foreach($arr as $k=>$v){
+                                                            $arr[$k] = Yii::$app->params['zonelist'][$v];
+                                                        }
+							 return implode("|", $arr);
+					}, 
+					
+			],  
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

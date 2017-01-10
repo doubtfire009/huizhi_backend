@@ -44,4 +44,15 @@ class SrvZone extends \yii\db\ActiveRecord
             'addr_list' => '下辖区,街道',
         ];
     }
+    
+    public function list_all()
+	{
+		$res_all = SrvZone::find()->all();
+		$arr_res = array();
+		foreach ($res_all as $v_srvzone)
+			$arr_res[$v_srvzone->id] = $v_srvzone->name ;
+	 
+		return $arr_res ; 
+		
+	}
 }

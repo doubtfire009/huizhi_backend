@@ -46,12 +46,13 @@ class Shifu extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mobile','join_date','leave_date'], 'required'],
-            [['birthday', 'join_date', 'leave_date'], 'safe'],
-            [['city', 'work_status', 'total_jobs', 'avg_score', 'avg_ontime', 'avg_cloth', 'avg_intro', 'avg_clean' ], 'integer'],
+//            [['mobile','join_date','leave_date'], 'required'],
+            [['mobile', 'name', 'idcard'], 'required'],
+//            [['birthday', 'join_date', 'leave_date'], 'safe'],
+            [['city', 'work_status', 'total_jobs', 'avg_score', 'avg_ontime', 'avg_cloth', 'avg_intro', 'avg_clean','off_weekidx','service_zone','line_id' ], 'integer'],
             [['mobile', 'name', 'idcard', 'zone','password','geohash','latitude','longitude'], 'string', 'max' => 32],
             [['sex','sf_type'], 'string', 'max' => 1],
-            [['address', 'skills_all', 'skills'], 'string', 'max' => 255],
+            [['address', 'skills_all'], 'string', 'max' => 255],
          
         ];
     }
@@ -70,9 +71,10 @@ class Shifu extends \yii\db\ActiveRecord
             'birthday' => '出生年月',
             'city' => '城市',
             'zone' => '区块',
+            'service_zone'=>'服务区',
             'address' => '详细地址',
             'skills_all' => '会的产品线',
-            'skills' => '可派的产品线',
+            'line_id' => '产品线',
             'wx_openid' => '微信绑定的openid',
             'work_status' => '上班与否',
             'total_jobs' => '一共多少单',
@@ -89,6 +91,7 @@ class Shifu extends \yii\db\ActiveRecord
 			'latitude'=>'纬度',
 			'longitude'=>'经度',
 			'sf_type'=>'师傅/学徒',
+            'off_weekidx'=>'休息日期'
         ];
     }
 	
@@ -111,5 +114,14 @@ class Shifu extends \yii\db\ActiveRecord
 			return false;
 		}
 	}
-	
+	public function list_all()
+	{
+		$res_all = Shifu::find()->all();
+		$arr_res = array();
+		foreach ($res_all as $v_shifu)
+			$arr_res[$v_shifu->id] = $v_shifu->name ;
+	 
+		return $arr_res ; 
+		
+	}
 }

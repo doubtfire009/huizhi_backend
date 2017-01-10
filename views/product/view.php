@@ -56,13 +56,13 @@ $arr_category = (new Category())->list_all();
 			[ 'attribute'=>'quality_desc','format'=>'html'],
 			[ 'attribute'=>'process_desc','format'=>'html'],
 			[ 'attribute'=>'price_desc','format'=>'html'],
-            'old_price',
-            'price',
+//            'old_price',
+//            'price',
             'date_created:datetime',
             'status',
             'brand_list',
 //            'sku_list',
-            'time_list',
+//            'time_list',
             'sort'
         ],
     ]) ?>

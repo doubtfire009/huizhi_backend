@@ -29,13 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'work_date',
-           
-			['attribute'=>'line_id','value'=>Yii::$app->params['linelist'][$model->line_id]],
+           'shifu_id',
+           ['attribute'=>'work_date','value'=>date('Y-m-d',$model->work_date)],
+	   ['attribute'=>'line_id','value'=>Yii::$app->params['linelist'][$model->line_id]],
+            'srvzone_id',
             'minutes_morning',
             'minutes_afternoon',
             'minutes_night',
-            'minutes_allday',
+            'work_status',
         ],
     ]) ?>
 

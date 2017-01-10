@@ -77,7 +77,7 @@ class LoginController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            return $this->redirect(['order/index']);
+            return $this->redirect(['category/index']);
         }
 
         $dir = Yii::$app->request->hostInfo."/".Yii::$app->request->baseUrl."/";

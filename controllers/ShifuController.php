@@ -37,7 +37,7 @@ class ShifuController extends Controller
     {
         $searchModel = new ShifuSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -64,9 +64,9 @@ class ShifuController extends Controller
     public function actionCreate()
     {
         $model = new Shifu();
-
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			
+	
 			$model->password = md5(Yii::$app->params['defaultpwd'].Yii::$app->params['hashkey']) ;
 			$model->save();
 				
@@ -88,9 +88,9 @@ class ShifuController extends Controller
     {
         $model = $this->findModel($id);
 		$oldpass = $model->password;
-
+                
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			
+                        
 			if ($oldpass != $model->password) {
 				
 				//密码改变了,重新生成一次密码

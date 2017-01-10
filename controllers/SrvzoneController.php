@@ -65,13 +65,22 @@ class SrvzoneController extends Controller
     {
         $model = new SrvZone();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+        if(Yii::$app->request->post()){
+            $tmp = Yii::$app->request->post();
+            $tmp['SrvZone']['addr_list'] = implode('|',$tmp['SrvZone']['addr_list']);
+            if ($model->load($tmp) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                return $this->render('create', [
+                    'model' => $model,
+                 ]);
+            }
+        }else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+       
     }
 
     /**
@@ -83,10 +92,18 @@ class SrvzoneController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
+       
+        if(Yii::$app->request->post()){
+            $tmp = Yii::$app->request->post();
+            $tmp['SrvZone']['addr_list'] = implode('|',$tmp['SrvZone']['addr_list']);
+            if ($model->load($tmp) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                return $this->render('update', [
+                    'model' => $model,
+                 ]);
+            }
+        }else {
             return $this->render('update', [
                 'model' => $model,
             ]);

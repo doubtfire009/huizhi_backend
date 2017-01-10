@@ -15,7 +15,7 @@ use app\common\Summernote;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true])->hint("举例：油烟机|油烟机清洗") ?>
 
     <?= $form->field($model, 'line_id')->dropDownList(Yii::$app->params['linelist'])  ?> 
 	
@@ -32,6 +32,10 @@ use app\common\Summernote;
                 <div class="icon_logo_bigimage_button_box">
                     <button id="product_icon_button" type="button" class="btn btn-sm btn-block btn-primary">上传小图标</button>
                     <input type="file" id="product_icon_file"  style="display:none">
+                    <div class="info-box">
+                       购物车icon
+                        尺寸：64*64px
+                    </div>
                 </div>
                 <div class="icon_logo_bigimage_box" id="product_icon_img">
                     <img src="<?= Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/img/product/system/product_question_mark.jpg"?>">
@@ -42,8 +46,13 @@ use app\common\Summernote;
                 <div class="icon_logo_bigimage_button_box">
                     <button id="product_logo_button" type="button" class="btn btn-sm btn-block btn-success">上传头像</button>
                     <input type="file" id="product_logo_file" style="display:none">
+                    <div class="info-box">
+                       目录页小图尺寸：252*256px
+
+                    </div>
                 </div>
                 <div class="icon_logo_bigimage_box" id="product_logo_img">
+                    
                     <img src="<?= Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/img/product/system/product_question_mark.jpg"?>">
 
                 </div>
@@ -52,6 +61,10 @@ use app\common\Summernote;
                 <div class="icon_logo_bigimage_button_box">
                     <button id="product_bigimage_button" type="button" class="btn btn-sm btn-block btn-info">上传大图标</button>
                     <input type="file" id="product_bigimage_file" style="display:none">
+                    <div class="info-box">
+                       主图尺寸：750*220px
+
+                    </div>
                 </div>
                 <div class="icon_logo_bigimage_box" id="product_bigimage_img"> 
                     <img src="<?= Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/img/product/system/product_question_mark.jpg"?>">
@@ -74,9 +87,7 @@ use app\common\Summernote;
 		['clientOptions'=>[]]) ?>
     
 	 
-    <?= $form->field($model, 'old_price')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?> 
+    
 
   
 	<?= $form->field($model, 'status')->dropDownList(Yii::$app->params['boollist'])  ?>
@@ -93,7 +104,7 @@ use app\common\Summernote;
 	
 	
 	 
-	<?= $form->field($model, 'time_list')->textInput(['maxlength' => true,'placeholder'=>'上午的折扣|下午的折扣|晚上的折扣|全天的折扣'])->hint('格式:1|1|1|0.9')  ?>
+	
 	<?= $form->field($model, 'sort')->textInput(['maxlength' => true])->hint('大的排前面')  ?>  
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

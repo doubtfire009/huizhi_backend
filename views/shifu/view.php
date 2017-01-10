@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use app\models\SrvZone;
 /* @var $this yii\web\View */
 /* @var $model app\models\Shifu */
 
@@ -36,12 +36,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'idcard',
             'birthday',
             ['attribute'=>'city','value'=>Yii::$app->params['citylist'][$model->city]],
-            ['attribute'=>'zone','value'=>Yii::$app->params['zonelist'][$model->zone] ],
+            ['attribute'=>'service_zone','value'=>(new SrvZone())->list_all()[$model->service_zone] ],
             'address',
-            'skills_all',
-            'skills',
+            'line_id',
+            ['attribute'=>'line_id','value'=>Yii::$app->params['linelist'][$model->line_id] ],
+//            'skills',
        
-			['attribute'=>'work_status','value'=>Yii::$app->params['worklist'][$model->work_status]],
+			['attribute'=>'work_status','value'=>Yii::$app->params['workstatuslist'][$model->work_status]],
             'total_jobs',
             'avg_score',
             'avg_ontime',

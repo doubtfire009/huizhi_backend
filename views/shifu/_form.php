@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use app\models\SrvZone;
 /* @var $this yii\web\View */
 /* @var $model app\models\Shifu */
 /* @var $form yii\widgets\ActiveForm */
@@ -24,19 +24,20 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'city')->dropDownList(Yii::$app->params['citylist'])  ?>
 
-    <?= $form->field($model, 'zone')->dropDownList(Yii::$app->params['zonelist'])->hint('城市划分为多个区域，一个师傅只接一个区域的单') ?>
+    <?= $form->field($model, 'service_zone')->dropDownList((new SrvZone())->list_all() )?>
 
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'skills_all')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'work_status')->dropDownList(Yii::$app->params['workstatuslist']) ?>
 
-    <?= $form->field($model, 'skills')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'line_id')->dropDownList(Yii::$app->params['linelist']) ?>
 
    
  
     <?= $form->field($model, 'join_date')->textInput() ?>
 
     <?= $form->field($model, 'leave_date')->textInput() ?>
+    <?= $form->field($model, 'off_weekidx')->dropDownList(Yii::$app->params['off_weekidx_list']) ?>
 	
 	 <?= $form->field($model, 'sf_type')->dropDownList(Yii::$app->params['sftypelist'])  ?>
 

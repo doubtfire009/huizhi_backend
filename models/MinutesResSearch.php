@@ -47,6 +47,14 @@ class MinutesResSearch extends MinutesRes
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pagesize' => '15',
+         ],
+            'sort' => [
+        'defaultOrder' => [
+            'id' => SORT_DESC,            
+        ]
+                ]
         ]);
 
         $this->load($params);

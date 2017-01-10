@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use app\models\SrvZone;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ShifuSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -13,14 +13,19 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="shifu-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', [
+                                'model' => $searchModel,
+//                                'id'=>$id,
+//                                'mobile'=>$mobile,
+//                                'name'=>$name,
+        ]); ?>
 
     <p>
         <?= Html::a('新建师傅', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -30,24 +35,26 @@ $this->params['breadcrumbs'][] = $this->title;
 		 
 			['attribute'=>'city',
 					'value' => function ($model) { 
-							return Yii::$app->params['citylist'][$model->city] ;
-					}, 
+                                                        
+							return Yii::$app->params['citylist'][$model->city] ;               
+                                        }, 
 					'filter' => Yii::$app->params['citylist'],   
 			
 			],
-			['attribute'=>'zone',
+			['attribute'=>'service_zone',
 					'value' => function ($model) { 
-							return Yii::$app->params['zonelist'][$model->zone] ;
+                                                        return (new SrvZone)->list_all()[$model->service_zone];
+//							return Yii::$app->params['zonelist'][$model->zone] ;
 					}, 
-					'filter' => Yii::$app->params['zonelist'], 
+//					'filter' => Yii::$app->params['zonelist'], 
 			
 			],
 			['attribute'=>'work_status',
 				'value' => function ($model) {
 				 
-					return Yii::$app->params['worklist'][$model->work_status] ;
+					return Yii::$app->params['workstatuslist'][$model->work_status] ;
 				},
-				'filter' => Yii::$app->params['worklist'], 
+				'filter' => Yii::$app->params['workstatuslist'], 
 			],
 
 			 
@@ -58,7 +65,20 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'zone',
             // 'address',
             // 'skills_all',
-            // 'skills',
+            ['attribute'=>'line_id',
+				'value' => function ($model) {
+				 
+					return Yii::$app->params['linelist'][$model->line_id] ;
+				},
+				'filter' => Yii::$app->params['linelist'], 
+			],
+            ['attribute'=>'off_weekidx',
+				'value' => function ($model) {
+				 
+					return Yii::$app->params['off_weekidx_list'][$model->off_weekidx] ;
+				},
+				'filter' => Yii::$app->params['off_weekidx_list'], 
+			],
             // 'wx_openid',
             // 'work_status',
             // 'total_jobs',

@@ -19,7 +19,7 @@ class ShifuSearch extends Shifu
     {
         return [
             [['id', 'city', 'work_status', 'total_jobs', 'avg_score', 'avg_ontime', 'avg_cloth', 'avg_intro', 'avg_clean', 'date_created'], 'integer'],
-            [['mobile', 'name', 'sex', 'idcard', 'birthday', 'zone', 'address', 'skills_all', 'skills',  'join_date', 'leave_date'], 'safe'],
+            [['mobile', 'name', 'sex', 'idcard', 'birthday', 'zone', 'address', 'skills_all',  'join_date', 'leave_date'], 'safe'],
         ];
     }
 
@@ -80,8 +80,8 @@ class ShifuSearch extends Shifu
             ->andFilterWhere(['like', 'idcard', $this->idcard])
             ->andFilterWhere(['like', 'zone', $this->zone])
             ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'skills_all', $this->skills_all])
-            ->andFilterWhere(['like', 'skills', $this->skills]);
+            ->andFilterWhere(['like', 'skills_all', $this->skills_all]);
+//            ->andFilterWhere(['like', 'skills', $this->skills]);
          
 
         return $dataProvider;

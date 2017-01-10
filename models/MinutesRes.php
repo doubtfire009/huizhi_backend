@@ -31,9 +31,9 @@ class MinutesRes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['work_date', 'line_id', 'minutes_morning', 'minutes_afternoon', 'minutes_night', 'minutes_allday'], 'required'],
-            [['line_id', 'minutes_morning', 'minutes_afternoon', 'minutes_night', 'minutes_allday'], 'integer'],
-            [['work_date'], 'string', 'max' => 32],
+            [[ 'shifu_id','line_id', 'srvzone_id','minutes_morning', 'minutes_afternoon', 'minutes_night'], 'required'],
+            [['work_date','line_id', 'minutes_morning', 'minutes_afternoon', 'minutes_night', 'minutes_allday'], 'integer'],
+            [['work_status'], 'string','max'=>255],
         ];
     }
 
@@ -45,11 +45,15 @@ class MinutesRes extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'work_date' => '日期',
-            'line_id' => '产品线ID',
-            'minutes_morning' => '上午已用',
-            'minutes_afternoon' => '下午已用',
-            'minutes_night' => '晚上已用',
+            'shifu_id' => '师傅',
+            'line_id' => '产品线',
+            'srvzone_id' => '服务区域',
+            'minutes_morning' => '上午可用',
+            'minutes_afternoon' => '下午可用',
+            'minutes_night' => '晚上可用',
             'minutes_allday' => '全天已用',
+            'work_status'=>'出勤状况',
+
         ];
     }
 }
