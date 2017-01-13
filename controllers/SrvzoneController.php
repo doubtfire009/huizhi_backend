@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * SrvzoneController implements the CRUD actions for SrvZone model.
  */
-class SrvzoneController extends Controller
+class SrvzoneController extends HomeController
 {
     /**
      * @inheritdoc
@@ -35,6 +35,7 @@ class SrvzoneController extends Controller
      */
     public function actionIndex()
     {
+        $this->role_permission([1,2]);
         $searchModel = new SrvZoneSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +52,7 @@ class SrvzoneController extends Controller
      */
     public function actionView($id)
     {
+        $this->role_permission([1,2]);
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +65,7 @@ class SrvzoneController extends Controller
      */
     public function actionCreate()
     {
+        $this->role_permission([1,2]);
         $model = new SrvZone();
 
         if(Yii::$app->request->post()){
@@ -91,6 +94,7 @@ class SrvzoneController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->role_permission([1,2]);
         $model = $this->findModel($id);
        
         if(Yii::$app->request->post()){
@@ -118,6 +122,7 @@ class SrvzoneController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->role_permission([1,2]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

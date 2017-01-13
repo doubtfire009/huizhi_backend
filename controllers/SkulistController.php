@@ -35,6 +35,7 @@ class SkulistController extends Controller
      */
     public function actionIndex()
     {
+        $this->role_permission([1,5]);
         $searchModel = new SkuListSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +52,7 @@ class SkulistController extends Controller
      */
     public function actionView($id)
     {
+        $this->role_permission([1,5]);
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +65,7 @@ class SkulistController extends Controller
      */
     public function actionCreate()
     {
+        $this->role_permission([1,5]);
         $model = new SkuList();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -82,6 +85,7 @@ class SkulistController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->role_permission([1,5]);
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -101,6 +105,7 @@ class SkulistController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->role_permission([1,5]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

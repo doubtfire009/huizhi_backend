@@ -45,6 +45,7 @@ class ProductController extends HomeController
      */
     public function actionIndex()
     {
+        $this->role_permission([1,5]);
         $searchModel = new ProductSearch();
         
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -77,6 +78,7 @@ class ProductController extends HomeController
      */
     public function actionView($id)
     {
+        $this->role_permission([1,5]);
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -89,6 +91,7 @@ class ProductController extends HomeController
      */
     public function actionCreate()
     {
+        $this->role_permission([1,5]);
         $model = new Product();
 
        AppAsset::css_controller_add([
@@ -115,6 +118,7 @@ class ProductController extends HomeController
      */
     public function actionUpdate($id)
     {
+        $this->role_permission([1,5]);
         $model = $this->findModel($id);
         AppAsset::css_controller_add([
            "/css/product.css"=>0,
@@ -140,7 +144,7 @@ class ProductController extends HomeController
      */
     public function actionDelete($id)
     {
-        
+        $this->role_permission([1,5]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

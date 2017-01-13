@@ -65,26 +65,26 @@ class AppAsset extends AssetBundle
                    
                     '产品类别管理'=>[
                         'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=category",
-                        'role'=>'2'
+                        'role'=>'1,5'
                     ],
                     '产品管理'=>[
                         'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=product",
-                        'role'=>'2'
+                        'role'=>'1,5'
                     ],
                     'SKU管理'=>[
                         'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=skulist",
-                        'role'=>'2'
+                        'role'=>'1,5'
                     ],
                 ],
             '师傅管理'=>[
                    
                     '师傅信息管理'=>[
                         'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=shifu",
-                        'role'=>'2'
+                        'role'=>'1,2'
                     ],
                     '日程管理'=>[
                         'url'=>Yii::$app->request->hostInfo.Yii::$app->request->baseUrl."/index.php?r=minutesres",
-                        'role'=>'2'
+                        'role'=>'1,2'
                     ],
                     
                 ],

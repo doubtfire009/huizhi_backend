@@ -38,6 +38,7 @@ class MinutesresController extends HomeController
      */
     public function actionIndex()
     {
+        $this->role_permission([1,2]);
         $searchModel = new MinutesResSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
@@ -62,6 +63,7 @@ class MinutesresController extends HomeController
      */
     public function actionView($id)
     {
+        $this->role_permission([1,2]);
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -74,6 +76,7 @@ class MinutesresController extends HomeController
      */
     public function actionCreate()
     {
+        $this->role_permission([1,2]);
         $model = new MinutesRes();
         AppAsset::css_controller_add([
             "/css/daterangepicker.css"=>0,
@@ -113,6 +116,7 @@ class MinutesresController extends HomeController
      */
     public function actionUpdate($id)
     {
+        $this->role_permission([1,2]);
         $model = $this->findModel($id);
         AppAsset::css_controller_add([
             "/css/daterangepicker.css"=>0,
@@ -153,6 +157,7 @@ class MinutesresController extends HomeController
      */
     public function actionDelete($id)
     {
+        $this->role_permission([1,2]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

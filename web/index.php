@@ -5,8 +5,15 @@ defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 defined('EXCEL_START_DATE_STAMP') or define('EXCEL_START_DATE_STAMP', 2209190400);//excel2007以1899-12-30为初始时间戳
 //defined('WEBROOT') or define('WEBROOT','C:/wamp/www/yii2_basic_backend_svn');
-defined('WEBROOT') or define('WEBROOT','/home/wwwroot/images/backend');
-defined('IMGURL') or define('IMGURL','http://img.huizhish.com');
+
+//defined('WEBROOT') or define('WEBROOT','/home/wwwroot/images/backend');
+//defined('IMGURL') or define('IMGURL','http://img.huizhish.com');
+
+defined('WEBROOT') or define('WEBROOT','C:/wamp/www/backend_back/web/img');
+defined('IMGURL') or define('IMGURL','http://localhost/backend_back/web/img');
+defined('IMGURL_MAIN') or define('IMGURL_MAIN','http://localhost/backend_back/web/img');
+
+
 
 require(__DIR__ . '/../vendor/autoload.php');
 require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');

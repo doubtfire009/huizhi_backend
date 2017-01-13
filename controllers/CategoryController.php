@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
-class CategoryController extends Controller
+class CategoryController extends HomeController
 {
     /**
      * @inheritdoc
@@ -35,6 +35,7 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
+        $this->role_permission([1,5]);
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -51,6 +52,7 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
+        $this->role_permission([1,5]);
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -63,6 +65,7 @@ class CategoryController extends Controller
      */
     public function actionCreate()
     {
+        $this->role_permission([1,5]);
         $model = new Category();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -91,6 +94,7 @@ class CategoryController extends Controller
      */
     public function actionUpdate($id)
     {
+        $this->role_permission([1,5]);
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -118,6 +122,7 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
+        $this->role_permission([1,5]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

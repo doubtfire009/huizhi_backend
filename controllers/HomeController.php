@@ -30,4 +30,22 @@ class HomeController extends Controller{
         }
         $this->Service_container = new ServiceContainer();
     }
+    ////在controller的function调用后判断它是否属于用户的权限，权限数字在params里面
+    //
+    public function role_permission($rolelist=array(1)){
+
+        $session = Yii::$app->session;
+        if(!isset($session['adminrole'])){
+            $this->role_error();
+            return $this->goHome();
+        }else{
+            if(!in_array($session['adminrole'], $rolelist)){
+               $this->redirect(array('/site/role_unmatched'));
+            }
+        }
+    }
+    public function role_error(){
+        Yii::$app->session->destroy();
+        
+    }
 }
